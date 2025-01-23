@@ -16,13 +16,20 @@ async function main() {
         new Europe()
     )
 
-    const account = await api.league.account("fastmiaou", "2601")
-    const summoner = await api.league.summoner(account.puuid)
-    console.log(summoner)
-    try {
-        const league = await api.league.league(summoner.id)
-        console.log(league)
+    const account = await api.lol.account.byGameNameAndTagLine("fastmiaou", "2601")
 
+    try {
+        const matches = await api.lol.match.byPuuid(account.puuid)
+        matches.forEach(async item => {
+            try {
+                console.log(item)
+                console.log(await api.lol.match.byMatchId(item))
+
+            } catch (e: any) {
+                console.log(e)
+            }
+        })
+    
     } catch (e: any) {
         console.log(e)
     }

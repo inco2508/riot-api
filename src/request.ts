@@ -28,13 +28,12 @@ export class Request {
                 }
             )
 
-            const json = await req.json()
-
             if (req.status !== 200) {
-                reject(json) 
+                reject(await req.text()) 
+                return
             }
 
-            resolve(json)
+            resolve(await req.json())
         })
     }
 

@@ -1,9 +1,9 @@
-import { League } from "./league/league";
+import { Lol } from "./lol/lol";
 import { PlatformLocation, RegionalLocation } from "./location";
 import { Request } from "./request";
 
 export class Api {
-    _league: League
+    _lol: Lol
     
     constructor(
         token: string,
@@ -11,10 +11,10 @@ export class Api {
         regionalLocation: RegionalLocation
     ) {
         const request = new Request(token, platformLocation, regionalLocation)
-        this._league = new League(request)
+        this._lol = new Lol(request)
     }
 
-    get league(): League {
-        return this._league
+    get lol(): Lol {
+        return this._lol
     }
 }
