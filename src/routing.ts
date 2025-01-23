@@ -16,4 +16,21 @@ export class RegionalRouting extends Routing {
     }
 }
 
+export function accountRoute( gameName: string, 
+    tagLine: string
+): string {
+    return `${new RegionalRouting().europe()}/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`
+}
+
+export function summonerRoute(
+    puuid: string
+): string {
+    return `${new PlatformRouting().euw1()}/lol/summoner/v4/summoners/by-puuid/${puuid}`
+}
+
+export function leagueRoute(
+    summonerId: string
+): string {
+    return `${new PlatformRouting().euw1()}/lol/league/v4/entries/by-summoner/${summonerId}`
+}
 
