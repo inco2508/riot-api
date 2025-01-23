@@ -33,5 +33,5 @@ export type League = {
     veteran: boolean
     freshBlood: boolean
     inactive: boolean
-    miniSeries?: MiniSeries // Optional as it might not always exist
+    miniSeries?: MiniSeries
 }

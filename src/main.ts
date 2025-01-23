@@ -1,7 +1,7 @@
 import "dotenv/config"
 
-import { Request }  from "./request"
 import { Europe, Euw1 } from "./location"
+import { Api } from "./api"
 
 
 async function main() {
@@ -10,12 +10,14 @@ async function main() {
         return
     }
 
-    let request = new Request(
+    const api = new Api(
+        process.env.RIOT_KEY,
         new Euw1(),
         new Europe()
     )
 
-    console.log(await request.account("fastmiaou", "2601"))
+    const account = await api.league.account("fastmiaou", "2601")
+    console.log(account)
 }
 
 main()

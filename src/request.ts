@@ -1,20 +1,20 @@
 import { PlatformLocation, RegionalLocation } from "./location"
-import { Url } from "./routing"
-import { Account, League, Summoner } from "./types"
 
 
 export class Request {
+    _token: string
     _platformLocation: PlatformLocation
     _regionalLocation: RegionalLocation
 
     constructor(
+        token: string,
         platformLocation: PlatformLocation,
         regionalLocation: RegionalLocation
     ) {
+        this._token = token
         this._platformLocation = platformLocation
         this._regionalLocation = regionalLocation
     }
-
 
     do<T>(url: string): Promise<T> {
         return new Promise<T>(async (resolve, reject) => {
@@ -23,12 +23,13 @@ export class Request {
                 {
                     method: "GET",
                     headers: {
-                        "X-Riot-Token": process.env.RIOT_KEY
+                        "X-Riot-Token": this._token 
                     }
                 }
             )
 
             if (req.status !== 200) {
+                // TODO: return something to handle the error
                 reject() 
             }
 
@@ -38,19 +39,12 @@ export class Request {
         })
     }
 
-    account(
-        tagName: string, 
-        tagLine: string
-    ): Promise<Account> {
-        return this.do<Account>(new Url().account(this._regionalLocation, tagName, tagLine))
+    get platformLocation(): PlatformLocation {
+        return this._platformLocation
     }
 
-    summoner(puuid: string): Promise<Summoner> {
-        return this.do<Summoner>(new Url().summoner(this._platformLocation, puuid))
-    }
 
-    league(summonerId: string): Promise<League> {
-        return this.do<League>(new Url().league(this._platformLocation, summonerId))
+    get regionalLocation(): RegionalLocation{
+        return this._regionalLocation
     }
 }
-

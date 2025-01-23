@@ -3,6 +3,6 @@
         "target": "ESNext",        
         "moduleResolution": "nodenext",
         "module": "nodenext",
-        "noEmit": true
+        "noEmit": true,
     }
 }

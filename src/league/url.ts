@@ -1,6 +1,6 @@
-import { PlatformLocation, RegionalLocation } from "./location"
+import { PlatformLocation, RegionalLocation } from "../location"
 
-export class Url {
+export class LeagueUrl {
     account( 
         route: RegionalLocation,
         gameName: string, 
