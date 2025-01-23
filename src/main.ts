@@ -1,6 +1,7 @@
 import "dotenv/config"
 
-import { account, league, summoner } from "./request"
+import { Request }  from "./request"
+import { Europe, Euw1 } from "./location"
 
 
 async function main() {
@@ -9,10 +10,12 @@ async function main() {
         return
     }
 
-    const a = await account("fastmiaou", "2601")
-    const s = await summoner(a.puuid)
-    console.log(s)
-    console.log(await league(s.id))
+    let request = new Request(
+        new Euw1(),
+        new Europe()
+    )
+
+    console.log(await request.account("fastmiaou", "2601"))
 }
 
 main()
