@@ -17,7 +17,15 @@ async function main() {
     )
 
     const account = await api.league.account("fastmiaou", "2601")
-    console.log(account)
+    const summoner = await api.league.summoner(account.puuid)
+    console.log(summoner)
+    try {
+        const league = await api.league.league(summoner.id)
+        console.log(league)
+
+    } catch (e: any) {
+        console.log(e)
+    }
 }
 
 main()

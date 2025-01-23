@@ -28,12 +28,11 @@ export class Request {
                 }
             )
 
-            if (req.status !== 200) {
-                // TODO: return something to handle the error
-                reject() 
-            }
+            const json = await req.json()
 
-            const json: T = await req.json()
+            if (req.status !== 200) {
+                reject(json) 
+            }
 
             resolve(json)
         })
