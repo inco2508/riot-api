@@ -1,5 +1,5 @@
-import { Request } from "../request"
-import { MatchDto } from "./dto/match"
+import { Request } from "../request.js"
+import { MatchDto } from "./dto/match.js"
 
 export class Match {
     _request: Request

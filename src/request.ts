@@ -1,4 +1,4 @@
-import { PlatformLocation, RegionalLocation } from "./location"
+import { PlatformLocation, RegionalLocation } from "./location.js"
 
 
 export class Request {
@@ -19,17 +19,17 @@ export class Request {
     do<T>(url: string): Promise<T> {
         return new Promise<T>(async (resolve, reject) => {
             const req = await fetch(
-                url, 
+                url,
                 {
                     method: "GET",
                     headers: {
-                        "X-Riot-Token": this._token 
+                        "X-Riot-Token": this._token
                     }
                 }
             )
 
             if (req.status !== 200) {
-                reject(await req.text()) 
+                reject(await req.text())
                 return
             }
 
@@ -42,7 +42,7 @@ export class Request {
     }
 
 
-    get regionalLocation(): RegionalLocation{
+    get regionalLocation(): RegionalLocation {
         return this._regionalLocation
     }
 }

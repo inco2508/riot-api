@@ -1,10 +1,10 @@
-import { Lol } from "./lol/lol";
-import { PlatformLocation, RegionalLocation } from "./location";
-import { Request } from "./request";
+import { Lol } from "./lol/lol.js";
+import { PlatformLocation, RegionalLocation } from "./location.js";
+import { Request } from "./request.js";
 
 export class Api {
     _lol: Lol
-    
+
     constructor(
         token: string,
         platformLocation: PlatformLocation,

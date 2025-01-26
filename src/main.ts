@@ -1,8 +1,7 @@
 import "dotenv/config"
 
-import { Europe, Euw1 } from "./location"
-import { Api } from "./api"
-
+import { Europe, Euw1 } from "./location.js"
+import { Api } from "./api.js"
 
 async function main() {
     if (!process.env.RIOT_KEY) {
@@ -29,7 +28,7 @@ async function main() {
                 console.log(e)
             }
         })
-    
+
     } catch (e: any) {
         console.log(e)
     }

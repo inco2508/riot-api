@@ -1,8 +1,8 @@
-import { Request } from "../request";
-import { Match } from "./match";
-import { Summoner } from "./summoner";
-import { Account } from "./account";
-import { League } from "./league";
+import { Request } from "../request.js";
+import { Match } from "./match.js";
+import { Summoner } from "./summoner.js";
+import { Account } from "./account.js";
+import { League } from "./league.js";
 
 export class Lol {
     _request: Request
@@ -21,7 +21,7 @@ export class Lol {
         this._summoner = new Summoner(request)
     }
 
-   
+
     get account(): Account {
         return this._account
     }
